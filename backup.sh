@@ -70,7 +70,13 @@ echo "Day:$day Month:$month Year:$year. "
 echo "Last last Julian Day:$lastLastJulianDay"
 
 #Acess cluster to find the last folder in local backup
-ssh root@cluster "cd /$pathCluster/$year/ ; ls -lrt | tail -n1 | cut -f10 -d' ' > ../backup.txt"
+#Test the number day to cut the right infromation
+if test $day -lt 10
+then
+    ssh root@cluster "cd /$pathCluster/$year/ ; ls -lrt | tail -n1 | cut -f11 -d' ' > ../backup.txt"
+else
+    ssh root@cluster "cd /$pathCluster/$year/ ; ls -lrt | tail -n1 | cut -f10 -d' ' > ../backup.txt"
+fi
 ssh root@cluster 'cd /$pathCluster/ ; lastFolder=`cat backup.txt | head -n1` ; echo Last Folder: $lastFolder ' > /$pathLocal/backup.txt
 
 lastFolder=`cat /$pathLocal/backup.txt | cut -f3 -d" "`
