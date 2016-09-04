@@ -5,14 +5,14 @@
 **O CRS-INPE realiza diariamente simulações do conteúdo eletrônico total da ionosfera através do SUPIM-DAVS.** </br>
 Essas simulações são feitas utilizando dados de observações, rodadas em uma das máquinas do cluster do instituto de pesquisa. 
 
-Entretanto, **não havia um sistema inteligente de backup** para salvar os dados das simulações do SUPIM-DAVS e as máquinas virtualizadas no INPE.</br>
-E para isso foi desenvolvido esse projeto.
+Entretanto, **não havia um sistema inteligente de backup** para salvar os dados das simulações do SUPIM-DAVS e as máquinas virtualizadas no INPE, e para isso foi desenvolvido esse projeto.
 
 **P.S.: Todos os dados sensíveis, como paths, IPs externos e locais, nomes de pastas e arquivos, foram ocultos por caráter de segurança.**
 
 ##Utilidade
 
-Conforme comentei acima, tendo em vista que não existia nenhum sistema de backup no CRS-INPE, **desenvolvi alguns scripts em Shell que fazem o backup dos dados diariamente (SUPIM-DAVS), e semanalmente (VMs).** </br>
+Tendo em vista que não existia nenhum sistema para manterem os arquivos sensíveis do CRS-INPE a salvo de falhas, **desenvolvi alguns scripts em Shell que fazem o backup dos dados diariamente (SUPIM-DAVS), e semanalmente (VMs).** 
+
 Os scripts foram todos desenvolvidos para um **sistema LINUX** e configurados para rodarem no **CRON** de uma máquina disponibilizada para o backup.
 
 ##Como funciona?
