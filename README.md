@@ -31,7 +31,7 @@ O arquivo _backupVMs.sh_ é responsável por **acessar o servidor, e então copi
 Para isso são verificados alguns pontos, como **tamanho e existência de arquivos na pasta**, etc..
 
 Além disso, foi configurado um sistema _postfix_ na máquina de backup. </br>
-Assim, a cada realização de novo procedimento de backup, **são enviados por email um relatório respectivo backup as pessoas de interesse.**
+Assim, a cada realização de novo procedimento de backup, **é enviado por email um relatório do respectivo backup às pessoas de interesse.**
 
 ##Direitos
 
@@ -40,19 +40,10 @@ Entretanto, algumas ideias de busca e gerenciamento de memória em situações d
 Caso isso seja feito, e algum trecho do código seja copiado, apenas peço para **manterem/referenciarem créditos ao autor**.
 
 
+
 Enjoy!
 
 **Hollweg**
-
-
-
-
-
-
-
-
-
-
 
 
 
