@@ -3,22 +3,23 @@
 ##A proposta
 
 **O CRS-INPE realiza diariamente simulações do conteúdo eletrônico total da ionosfera através do SUPIM-DAVS.** </br>
-Essas simulações são feitas utilizando dados de observações, rodadas em uma das máquinas do cluster do instituto de pesquisa. </br>
-Entretanto, **não havia um sistema inteligente de backup para salvar os dados das simulações do SUPIM-DAVS e as máquinas virtualizadas no INPE.**
+Essas simulações são feitas utilizando dados de observações, rodadas em uma das máquinas do cluster do instituto de pesquisa. 
+
+Entretanto, **não havia um sistema inteligente de backup** para salvar os dados das simulações do SUPIM-DAVS e as máquinas virtualizadas no INPE.</br>
 E para isso foi desenvolvido esse projeto.
 
 **P.S.: Todos os dados sensíveis, como paths, IPs externos e locais, nomes de pastas e arquivos, foram ocultos por caráter de segurança.**
 
 ##Utilidade
 
-Tendo em vista que não existia nenhum sistema de backup no CRS-INPE, **desenvolvi alguns scripts em Shell que fazem o backup dos dados diariamente (SUPIM-DAVS), e semanalmente (VMs).** </br>
+Conforme comentei acima, tendo em vista que não existia nenhum sistema de backup no CRS-INPE, **desenvolvi alguns scripts em Shell que fazem o backup dos dados diariamente (SUPIM-DAVS), e semanalmente (VMs).** </br>
 Os scripts foram todos desenvolvidos para um **sistema LINUX** e configurados para rodarem no **CRON** de uma máquina disponibilizada para o backup.
 
 ##Como funciona?
 
-Para backup dos dados de simulação ionosférica, foi desenvolvido um script (julianday.sh) **a fim de calcular o dia juliano atual e dois dias julianos anteriores para facilitar o processo de backup dos dados**, tendo em vista que o sistema de simulação ionosférica se baseia em dias julianos.
+Para backup dos dados de simulação ionosférica, foi desenvolvido o script _julianday.sh_ **a fim de calcular o dia juliano atual e dois dias julianos anteriores para facilitar o processo de backup dos dados**, tendo em vista que o sistema de simulação ionosférica se baseia em dias julianos.
 
-O arquivo _backup.sh_ é responsável por rodar o script 'julianday.sh' e assim **verificar se o ano é bissexto ou não, e fazer a verificação para gerenciamento das pastas de backup**, para dessa forma, não sobreescrever as pastas ou salvar os arquivos de interesse em um lugar errado. </br>
+O arquivo _backup.sh_ é responsável por executar o script _julianday.sh_ e assim **verificar se o ano é ou não bissexto, e fazer a verificação para gerenciamento das pastas de backup**, para dessa forma, não sobreescrever as pastas ou salvar os arquivos de interesse em um lugar errado. </br>
 Assim, **acessa-se por ssh a máquina de backup, verifica-se a existência dos últimos dados a serem copiados e então é efetuado o backup dos arquivos sensíveis de simulações se os mesmos estiverem disponíveis para serem copiados.** 
 
 O arquivo _cronbackupmachines.sh_ é responsável por **semanalmente desligar as VMs virtualizadas no INPE, criar imagens específicas de cada uma das máquinas, e então religá-las após este processo.** </br>
@@ -34,8 +35,8 @@ Assim, a cada realização de novo procedimento de backup, **são enviados por e
 
 ##Direitos
 
-Dificilmente o projeto em si possa ser reproduzido, pois se trata de um sistema de backup bastante complexo para um caso específico. </br>
-Entretanto, algumas ideias de busca e gerenciamento de memória em situações de backup podem ser reutilizadas. </br>
+**Dificilmente o projeto em si possa ser reproduzido, pois se trata de um sistema de backup bastante complexo para um caso específico.** </br>
+Entretanto, algumas ideias de busca e gerenciamento de memória em situações de backup **podem ser reutilizadas.** </br>
 Caso isso seja feito, e algum trecho do código seja copiado, apenas peço para **manterem/referenciarem créditos ao autor**.
 
 
