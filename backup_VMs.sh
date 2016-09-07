@@ -11,9 +11,20 @@ echo "Starting VMs backup in (`date "+%x %X"`)"
 echo ""
 
 echo "Changing directory and creating backup folder..."
-ssh root@virt "cd /$pathVirt/ ; ls -lrt | tail -n1 | cut -f9 -d' ' " > /$pathBackup/folderName.txt
+
+#Saves day number to verify the cut field
+ssh root@virt "date +%d" > /$pathBackup/folderName.txt
+day=`cat /$pathBackup/folderName.txt`
+
+if test $day -lt 10
+then
+	ssh root@virt "cd /$pathVirt/ ; ls -lrt | tail -n1 | cut -f10 -d' ' " > /$pathBackup/folderName.txt
+else
+	ssh root@virt "cd /$pathVirt/ ; ls -lrt | tail -n1 | cut -f9 -d' ' " > /$pathBackup/folderName.txt
+fi
+
 folderName=`cat /$pathBackup/folderName.txt` 
-echo "Data do ultimo backup encontrado no servidor: $folderName."
+echo "Last backup date on server: $folderName."
 echo " "
 
 #Check if the folder did not exists in backup, if exists do not copy it.
