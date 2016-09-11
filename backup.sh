@@ -71,7 +71,8 @@ echo "Last last Julian Day:$lastLastJulianDay"
 
 #Acess cluster to find the last folder in local backup
 #Test the number day to cut the right infromation
-if test $day -lt 10
+dayBackup=`expr $day - 2`
+if test $dayBackup -lt 10
 then
     ssh root@cluster "cd /$pathCluster/$year/ ; ls -lrt | tail -n1 | cut -f11 -d' ' > ../backup.txt"
 else
