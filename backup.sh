@@ -3,7 +3,7 @@
 echo " "
 echo "#######    Cluster Backup Script        #######" 
 echo "####### Developed by Guilherme Hollweg  #######"
-echo "#######    Last Update: 08/2016         #######"
+echo "#######    Last Update: 09/2016         #######"
 echo " "
 echo "Acquiring Julian Day and server date..."
 
