@@ -33,9 +33,15 @@ Para isso são verificados alguns pontos, como **tamanho e existência de arquiv
 Além disso, foi configurado um sistema _postfix_ na máquina de backup. </br>
 Assim, a cada realização de novo procedimento de backup, **é enviado por email um relatório do respectivo backup às pessoas de interesse.**
 
+Abaixo, fica uma imagem do email de backup recebido do dia juliano 268.
+
+![Imgur](http://i.imgur.com/mmyOUOk.png)
+
+
 ##Direitos
 
 **Dificilmente o projeto em si possa ser reproduzido, pois se trata de um sistema de backup bastante complexo para um caso específico.** </br>
+
 Entretanto, algumas ideias de busca e gerenciamento de memória em situações de backup **podem ser reutilizadas.** </br>
 Caso isso seja feito, e algum trecho do código seja copiado, apenas peço para **manterem/referenciarem créditos ao autor**.
 
