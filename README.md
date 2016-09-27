@@ -33,7 +33,7 @@ Para isso são verificados alguns pontos, como **tamanho e existência de arquiv
 Além disso, foi configurado um sistema _postfix_ na máquina de backup. </br>
 Assim, a cada realização de novo procedimento de backup, **é enviado por email um relatório do respectivo backup às pessoas de interesse.**
 
-Abaixo, fica uma imagem do email de backup recebido do dia juliano 268.
+Abaixo, fica uma imagem do email de backup recebido referente ao dia juliano nº268.
 
 ![Imgur](http://i.imgur.com/mmyOUOk.png)
 
