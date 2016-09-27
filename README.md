@@ -35,7 +35,7 @@ Assim, a cada realização de novo procedimento de backup, **é enviado por emai
 
 Abaixo, fica uma imagem do email de backup recebido do dia juliano 268.
 
-<center>![Imgur](http://i.imgur.com/mmyOUOk.png)</center>
+![Imgur](http://i.imgur.com/mmyOUOk.png)
 
 
 ##Direitos
