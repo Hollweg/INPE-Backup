@@ -3,7 +3,7 @@
 echo " "
 echo "#######     VMs Backup Script           #######" 
 echo "####### Developed by Guilherme Hollweg  #######"
-echo "#######    Last Update: 08/2016         #######"
+echo "#######    Last Update: 10/2016         #######"
 echo " "
 
 echo " "
