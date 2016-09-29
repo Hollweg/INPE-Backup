@@ -6,8 +6,19 @@ echo "####### Developed by Guilherme Hollweg  #######"
 echo "#######    Last Update: 08/2016         #######"
 echo " "
 
+echo " "
+echo "Acessing server to acquire actual date"
+
+ssh root@virt "date +%e > date.txt ; date +%m >> date.txt ; date +%y >> date.txt"
+ssh root@virt 'day=`cat date.txt | head -n1`; month=`cat date.txt | tail -n2 | head -n1`; year=`cat date.txt | tail -n1`; 
+echo day: $day month: $month and year: 20$year' > /$pathLocal/date.txt
+
+day=`cat /$pathLocal/date.txt | cut -f2 -d" "` ;
+month=`cat /$pathLocal/date.txt | cut -f4 -d" "` ;
+year=`cat /$pathLocal/date.txt | cut -f7 -d" "` ;
+
 #Acess cluster and return the name of last backup folder
-echo "Starting VMs backup in (`date "+%x %X"`)"
+echo "Starting VMs backup in ($day-$month-$year)"
 echo ""
 
 echo "Changing directory and creating backup folder..."
@@ -81,9 +92,16 @@ else
 			echo "$folderName" > /$pathBackup/$filename.txt
 			echo "Done!"
 			echo " "
-			
+
+			ssh root@virt "date +%e > date.txt ; date +%m >> date.txt ; date +%y >> date.txt"
+			ssh root@virt 'day=`cat date.txt | head -n1`; month=`cat date.txt | tail -n2 | head -n1`; year=`cat date.txt | tail -n1`;echo day: $day month: $month and year: 20$year' > /$pathLocal/date.txt
+
+			day=`cat /$pathLocal/date.txt | cut -f2 -d" "` ;
+			month=`cat /$pathLocal/date.txt | cut -f4 -d" "` ;
+			year=`cat /$pathLocal/date.txt | cut -f7 -d" "` ;
+
 			echo " "
-			echo "Backup done in (`date "+%x %X"`)!"
+			echo "Backup done in ($day-$month-$year)!"
 			echo " "
 
 		else
@@ -100,5 +118,7 @@ fi
 #Deleting additional folders
 echo "Deleting additional files..."
 rm -f /$pathBackup/folderName.txt
+rm -f /$pathLocal/date.txt
+ssh root@virt "rm -f ./date.txt"
 echo "Done!"
 
