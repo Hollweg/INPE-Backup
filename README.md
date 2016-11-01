@@ -1,50 +1,51 @@
 #INPE Cluster Backup
 
-##A proposta
+##The purpose
 
-**O CRS-INPE realiza diariamente simulações do conteúdo eletrônico total da ionosfera através do SUPIM-DAVS.** </br>
-Essas simulações são feitas utilizando dados de observações, rodadas em uma das máquinas do cluster do instituto de pesquisa. 
+**The CRS-INPE performs daily simulations of the total electronic content of the ionosphere** through a ionosphere prediction model (SUPIM-DAVS). </br>
+These simulations are done using **observational data** executed on the research institute clusters. 
 
-Entretanto, **não havia um sistema inteligente de backup** para salvar os dados das simulações do SUPIM-DAVS e as máquinas virtualizadas no INPE, e para isso foi desenvolvido esse projeto.
+However, **there wasn't an intelligent backup system to save SUPIM-DAVS simulation data and virtualised machines at INPE.** </br>
+In this way, this software was developed, to realize a backup on INPE sensitive data.
 
-**P.S.: Todos os dados sensíveis, como paths, IPs externos e locais, nomes de pastas e arquivos, foram ocultos por caráter de segurança.**
+**P.S.: All sensitive data, such as paths, external and local IPs, folder names and files were hidden for security reasons.**
 
-##Utilidade
+##Utility
 
-Tendo em vista que não existia nenhum sistema para manterem os arquivos sensíveis do CRS-INPE a salvo de falhas, **desenvolvi alguns scripts em Shell que fazem o backup dos dados diariamente (SUPIM-DAVS), e semanalmente (VMs).** 
+Given that there was no system to keep sensitive files on INPE and prevent failures, **I developed Shell Script algorithms to realize SUPIM backup (daily) and VM's backup (weekly)**.
 
-Os scripts foram todos desenvolvidos para um **sistema LINUX** e configurados para rodarem no **CRON** de uma máquina disponibilizada para o backup.
+The scripts were all developed for a **LINUX system** and configured to run on **CRON in the backup machine**. 
 
-##Como funciona?
+##How it works?
 
-Para backup dos dados de simulação ionosférica, foi desenvolvido o script _julianday.sh_ **a fim de calcular o dia juliano atual e dois dias julianos anteriores para facilitar o processo de backup dos dados**, tendo em vista que o sistema de simulação ionosférica se baseia em dias julianos.
+To backup the ionospheric simulation data, we developed the _julianday.sh_ script **to calculate the current Julian day and Julian previous two days to facilitate the process of backup data**, given that the ionospheric simulation system is based on julian days.
 
-O arquivo _backup.sh_ é responsável por executar o script _julianday.sh_ e assim **verificar se o ano é ou não bissexto, e fazer a verificação para gerenciamento das pastas de backup**, para dessa forma, não sobreescrever as pastas ou salvar os arquivos de interesse em um lugar errado. </br>
-Assim, **acessa-se por ssh a máquina de backup, verifica-se a existência dos últimos dados a serem copiados e então é efetuado o backup dos arquivos sensíveis de simulações se os mesmos estiverem disponíveis para serem copiados.** 
+The _backup.sh_ file is responsible for **running the julianday.sh script and thus check whether is a leap year**. In addition, it **check for management of backup folders, thus not overwrite folders or save files of interest in a wrong place.** </br>
+So, the backup machine is **ssh accessed** and it is **verified the existence of the last data to be copied.** </br>
+Then the backup is made to keep sensitive simulation files safe (if they are available to be copied).
 
-O arquivo _cronbackupmachines.sh_ é responsável por **semanalmente desligar as VMs virtualizadas no INPE, criar imagens específicas de cada uma das máquinas, e então religá-las após este processo.** </br>
-Esse é um trabalho bastante complexo, pois são desligadas máquinas sensíveis do sistema. </br>
-Portanto, é um procedimento que **não deve admitir falhas**.</br>
-Tendo em vista que os arquivos de imagens das máquinas são grandes, é necessário fazer um gerenciamento de memória no servidor, para que sempre haja espaço para o backup. 
+The _cronbackupmachines.sh_ file is responsible for **turn off INPE VMs one time a week, create specific images of each of the machines, and then reattach them after this process.** </br>
+**This is a very complex work, because INPE sensitive need to be switched off.** </br>
+Therefore, it is a procedure that should **not admit fault.** </br>
+Given that the **machine image files are large**, it is necessary to make a **memory management on the server**, so there is always space for backup.
 
-O arquivo _backupVMs.sh_ é responsável por **acessar o servidor, e então copiar os arquivos .img para a máquina de backup, bem como fazer todo o gerenciamento de memória local, e a verificação se o backup no servidor foi realizado com sucesso.** </br>
-Para isso são verificados alguns pontos, como **tamanho e existência de arquivos na pasta**, etc..
+The _backupVMs.sh_ file is responsible for **accessing the server, and then copy the .img files to the backup machine and do all the local memory management.**</br>
+Moreover, **perform a verification if the backup server was successful.** </br>
+For this task some points need to be checked, such as **size and existence of files in the backup folder, etc..**
 
-Além disso, foi configurado um sistema _postfix_ na máquina de backup. </br>
-Assim, a cada realização de novo procedimento de backup, **é enviado por email um relatório do respectivo backup às pessoas de interesse.**
+In addition, has been configured a **postfix system in the backup machine.** </br>
+Thus, always that a new backup procedure is done it is **emailed a backup report to people of interest**.
 
-Abaixo, fica uma imagem do email de backup recebido referente ao dia juliano nº268.
+Below there is an image of a received backup email referent at julian day #268.
 
 ![Imgur](http://i.imgur.com/mmyOUOk.png)
 
 
-##Direitos
+##Copyrights
 
-**Dificilmente o projeto em si possa ser reproduzido, pois se trata de um sistema de backup bastante complexo para um caso específico.** </br>
-
-Entretanto, algumas ideias de busca e gerenciamento de memória em situações de backup **podem ser reutilizadas.** </br>
-Caso isso seja feito, e algum trecho do código seja copiado, apenas peço para **manterem/referenciarem créditos ao autor**.
-
+**Hardly the project itself can be reproduced because it is a backup system quite complex to a specific case.** </br>
+However, some **search ideas and memory management in backup situations can be reused.**
+If you want to reproduce some part of system or if you want to copy a piece of code, please, just **keep credits to the author.**
 
 
 Enjoy!
