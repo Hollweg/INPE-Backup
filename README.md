@@ -44,7 +44,7 @@ Below there is an image of a received backup email referent at julian day #268.
 ##Copyrights
 
 **Hardly the project itself can be reproduced because it is a backup system quite complex to a specific case.** </br>
-However, some **search ideas and memory management in backup situations can be reused.**
+However, some **search ideas and memory management in backup situations can be reused.** </br>
 If you want to reproduce some part of system or if you want to copy a piece of code, please, just **keep credits to the author.**
 
 
