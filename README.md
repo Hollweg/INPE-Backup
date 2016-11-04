@@ -2,11 +2,11 @@
 
 ##The purpose
 
-**The CRS-INPE performs daily simulations of the total electronic content of the ionosphere** through a ionosphere prediction model (SUPIM-DAVS). </br>
+**The CRS-INPE performs daily simulations of the total electronic content of the ionosphere** through an ionosphere prediction model (SUPIM-DAVS). </br>
 These simulations are done using **observational data** executed on the research institute clusters. 
 
-However, **there wasn't an intelligent backup system to save SUPIM-DAVS simulation data and virtualised machines at INPE.** </br>
-In this way, this software was developed, to realize a backup on INPE sensitive data.
+However, **there wasn't an intelligent backup system to save SUPIM-DAVS simulation data and virtualized machines at INPE.** </br>
+In this way, this software was developed to realize a backup on INPE sensitive data.
 
 **P.S.: All sensitive data, such as paths, external and local IPs, folder names and files were hidden for security reasons.**
 
@@ -24,8 +24,8 @@ The _backup.sh_ file is responsible for **running the julianday.sh script and th
 So, the backup machine is **ssh accessed** and it is **verified the existence of the last data to be copied.** </br>
 Then the backup is made to keep sensitive simulation files safe (if they are available to be copied).
 
-The _cronbackupmachines.sh_ file is responsible for **turn off INPE VMs one time a week, create specific images of each of the machines, and then reattach them after this process.** </br>
-**This is a very complex work, because INPE sensitive need to be switched off.** </br>
+The _cronbackupmachines.sh_ file is responsible for **turn off INPE VMs one time a week, create specific images of each machine and reattach them after this process.** </br>
+**This is a very complex work, because INPE sensitive virtualized machines need to be switched off.** </br>
 Therefore, it is a procedure that should **not admit fault.** </br>
 Given that the **machine image files are large**, it is necessary to make a **memory management on the server**, so there is always space for backup.
 
