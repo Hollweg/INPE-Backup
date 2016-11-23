@@ -21,6 +21,19 @@ year=`cat /$pathLocal/date.txt | cut -f7 -d" "` ;
 echo "Starting VMs backup in ($day-$month-$year)"
 echo ""
 
+echo "Verifying the existence of folder in backup HDD..."
+hddFolder="backup_folder"
+cd $pathBackup
+if [ -d "$hddFolder" ];
+then
+	echo "The backup folder exists!"
+else
+	echo "The backup folder did not exists. Creating it..."
+	mkdir backup_folder
+	echo "Folder created. Continuing backup!"
+fi
+
+echo ""
 echo "Changing directory and creating backup folder..."
 
 #Saves day number to verify the cut field
