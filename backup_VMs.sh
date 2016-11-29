@@ -99,10 +99,21 @@ else
 		then
 			echo "Backup folder OK!"
 			echo "Deleting old backup folder..."
-		#Save the folder name to be postpone deleted in the next backup in the file $filename.txt
-			oldFolder=`cat /$pathBackup/$filename.txt`
-			rm -rf /$pathBackup/$oldFolder/
-			echo "$folderName" > /$pathBackup/$filename.txt
+			
+		        #Save the folder name to be postpone deleted in the next backup in the file $filename.txt
+			numberFolders=`ls | wc -l`
+			if test $numberFolders -gt 1
+			then
+			    oldFolder=`cat /$pathLocal/oldFolder.txt`
+			    echo "An old backup folder was found: $oldFolder"
+			    echo "Deleting it..."
+			    rm -rf /$pathLocal/$oldFolder/
+			    echo "Folder deleted."
+			    echo "$folderName" > /$pathLocal/oldFolder.txt
+			else
+		            echo "$folderName" > /$pathLocal/oldFolder.txt
+			fi
+			
 			echo "Done!"
 			echo " "
 
