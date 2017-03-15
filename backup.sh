@@ -3,7 +3,7 @@
 echo " "
 echo "#######    Cluster Backup Script        #######" 
 echo "####### Developed by Guilherme Hollweg  #######"
-echo "#######    Last Update: 09/2016         #######"
+echo "#######    Last Update: 03/2017         #######"
 echo " "
 echo "Acquiring Julian Day and server date..."
 
@@ -70,16 +70,8 @@ echo "Day:$day Month:$month Year:$year. "
 echo "Last last Julian Day:$lastLastJulianDay"
 
 #Acess cluster to find the last folder in local backup
-#Test the number day to cut the right infromation
-
-if test $day -lt 10
-then
-    ssh root@cluster "cd /$pathCluster/$year/ ; ls -lrt | tail -n1 | cut -f11 -d' ' > ../backup.txt"
-else
-    ssh root@cluster "cd /$pathCluster/$year/ ; ls -lrt | tail -n1 | cut -f10 -d' ' > ../backup.txt"
-fi
+ssh root@cluster "cd /$pathCluster/$year/ ; ls -lrt | tail -n1 | rev | cut -f1 -d' ' | rev > ../backup.txt"
 ssh root@cluster 'cd /$pathCluster/ ; lastFolder=`cat backup.txt | head -n1` ; echo Last Folder: $lastFolder ' > /$pathLocal/backup.txt
-
 lastFolder=`cat /$pathLocal/backup.txt | cut -f3 -d" "`
 
 echo " "

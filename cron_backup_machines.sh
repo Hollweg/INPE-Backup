@@ -3,7 +3,7 @@
 echo " "
 echo "#######      Cluster VMs Backup Script        #######" 
 echo "#######   Developed by Guilherme Hollweg      #######"
-echo "#######        Last Update: 08/2016           #######"
+echo "#######        Last Update: 03/2017           #######"
 echo " "
 echo "Virtual Machines backup started in `date "+%x %X"`"
 echo " "
@@ -11,10 +11,16 @@ echo " "
 echo "Virsh real state in (`date "+%x %X"`): "
 echo " "
 virsh list --all
-upMachines=`virsh list | grep maq | wc -l`
+upMachines=`virsh list | grep maq | wc -l	`
 
 echo "Shutting down the following machines... (`date "+%x %X"`)"
-virsh list | grep maq | cut -f6 -d" " > /$pathVirt/VMs_on ; 
+#Testing the right field to cut
+if [[ $(virsh list | grep maq | cut -f6 -d" ") ]]; then
+    virsh list | grep maq | cut -f6 -d" " > /$pathVirt/VMs_on ;
+else
+    virsh list | grep maq | cut -f5 -d" " > /$pathVirt/VMs_on ;
+fi
+
 cat /$pathVirt/VMs_on;
 echo " "
 
