@@ -1,6 +1,6 @@
-#INPE Cluster Backup
+# INPE Cluster Backup
 
-##The purpose
+## The purpose
 
 **The CRS-INPE performs daily simulations of the total electronic content of the ionosphere** through an ionosphere prediction model (SUPIM-DAVS). </br>
 These simulations are done using **observational data** executed on the research institute clusters. 
@@ -10,13 +10,13 @@ In this way, this software was developed to realize a backup on INPE sensitive d
 
 **P.S.: All sensitive data, such as paths, external and local IPs, folder names and files were hidden for security reasons.**
 
-##Utility
+## Utility
 
 Given that there was no system to keep sensitive files on INPE and prevent failures, **I developed Shell Script algorithms to realize SUPIM backup (daily) and VM's backup (weekly)**.
 
 The scripts were all developed for a **LINUX system** and configured to run on **CRON in the backup machine**. 
 
-##How it works?
+## How it works?
 
 To backup the ionospheric simulation data, we developed the _julianday.sh_ script **to calculate the current Julian day and Julian previous two days to facilitate the process of backup data**, given that the ionospheric simulation system is based on julian days.
 
@@ -41,7 +41,7 @@ Below there is an image of a received backup email referent at julian day #268.
 ![Imgur](http://i.imgur.com/mmyOUOk.png)
 
 
-##Copyrights
+## Copyrights
 
 **Hardly the project itself can be reproduced because it is a backup system quite complex to a specific case.** </br>
 However, some **search ideas and memory management in backup situations can be reused.** </br>
